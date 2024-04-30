@@ -7,37 +7,58 @@
 
 
     <style>
+        body{
+            font-family: Arial, sans-serif;
+        }
+
         .subscribe-button{
             padding: 10px 20px;
-            background-color: #000000;
+            background-color: black;
             color: white;
             border: none;
             border-radius: 50px;
             cursor: pointer;
             font-weight: bold;
             cursor: pointer;
+
+            margin-bottom: 30px;
         }
 
-        .subscribe-button:hover{
+        /* .subscribe-button:hover{
             background-color: #333333;
             box-shadow: inset 0 0 10px #000000;
             transition: background-color 0.3s;
-        }
+        } */
 
         .is-subscribed{
-            background-color: grey;
+            background-color: rgb(240, 240, 240);
             color: black;
         }
+
+        .cost-input{
+            font-size: 15px;
+            padding: 10px;
+        }
+
+        .calculate-button{
+            color: white;
+            background-color: green;
+            border: none;
+            padding: 12px 15px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
     </style>
 </head>
 <body>
-   <a>YouTube Subscribe Button</a>
+   <p>YouTube Subscribe Button</p>
    <button onclick="subscribe();" class="subscribe-button">Subscribe</button>
 
    
     <p>Amazon Shipping Calculator</p>
-    <input placeholder="Cost of order" class="js-cost-input"  onkeydown="handleCostKeydown(event);">
-    <button onclick="calculateTotal();">Calculate</button>
+    <input placeholder="Cost of order" class="js-cost-input cost-input"  onkeydown="handleCostKeydown(event);">
+    <button onclick="calculateTotal();" class="calculate-button">Calculate</button>
 
     <p class="js-total-cost";"></p>
     
@@ -80,6 +101,7 @@
                 buttonElement.classList.add('is-subscribed');
             } else {
                 buttonElement.innerHTML = 'Subscribe';
+                buttonElement.classList.remove('is-subscribed');
             }
         }
 
