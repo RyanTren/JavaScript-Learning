@@ -11,22 +11,17 @@
 <body>
     <p class="title">Rock Paper Scissors</p>
     
-    <button onclick="playGame('Rock');" >
-    <img src="assets/rock.png"> 
+    <button onclick="playGame('Rock');" class="move-button">
+    <img src="assets/rock.png" class = "move-icon"> 
+    </button>
+
+    <button onclick="playGame('Paper');" class="move-button">
+    <img src="assets/paper.png" class = "move-icon">
     </button>
 
     <button onclick="
-        playGame('Paper');
-    
-    ">
-    <img src="assets/paper.png">
-    </button>
-
-    <button onclick="
-        playGame('Scissors');
-    
-    ">
-    <img src="assets/scissors.png">
+        playGame('Scissors');" class="move-button">
+    <img src="assets/scissors.png" class = "move-icon">
     </button>
 
     <p class="js-result"></p>
@@ -41,7 +36,8 @@
         score.ties = 0;
         localStorage.removeItem('score');
         updateScoreElement();
-    ">Reset Score</button>
+    "
+    class="reset-score-button">Reset Score</button>
 
     <script src="index.js"></script>
 </body>
