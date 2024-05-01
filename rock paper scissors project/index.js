@@ -65,21 +65,18 @@ document.querySelector('.js-score').innerHTML = `Wins: ${score.wins}, Losses: ${
 }
 
 function pickComputerMove(){
-const randomNumber = Math.random();
-let computerMove = '';
+    const randomNumber = Math.random();
+    let computerMove = '';
 
-if(randomNumber >= 0 && randomNumber < 1/3){
-    computerMove = 'Rock';
-    
-}
-else if(randomNumber >= 1/3 && randomNumber < 2/3){
-    computerMove = 'Paper';
-    
-}
-else if(randomNumber >= 3/3 && randomNumber < 1){
-    computerMove = 'Scissors';
+    if(randomNumber >= 0 && randomNumber < 1/3){
+        computerMove = 'Rock';
+    }
+    else if(randomNumber >= 1/3 && randomNumber < 2/3){
+        computerMove = 'Paper';
+    }
+    else {
+        computerMove = 'Scissors';
+    }
 
-}
-
-return computerMove;
+    return computerMove;
 }
