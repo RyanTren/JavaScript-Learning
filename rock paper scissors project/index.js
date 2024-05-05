@@ -56,8 +56,8 @@ document.querySelector('.js-result').innerHTML = result;
 
 document.querySelector('.js-moves').innerHTML = `You Picked <img src="assets/${playerMove}.png" class = "move-icon">. Computer Picked <img src="assets/${computerMove}.png" class ="move-icon">.`;
 
-alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}
-Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
+// alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}
+// Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
 }
 
 function updateScoreElement(){
@@ -79,4 +79,20 @@ function pickComputerMove(){
     }
 
     return computerMove;
+}
+
+let isAutoPlaying = false;
+let intervalID;
+
+function autoPlay(){
+    if(!isAutoPlaying){
+        intervalID = setInterval(function(){
+            const playerMove = pickComputerMove();
+            playGame(playerMove);
+        }, 1000); 
+        isAutoPlaying = true;
+    } else{
+        clearInterval(intervalID);
+        isAutoPlaying = false;
+    }
 }
