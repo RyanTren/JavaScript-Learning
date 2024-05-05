@@ -42,10 +42,12 @@ function renderTodoList(){
 
     document.querySelectorAll('.js-delete-todo-button').forEach((deleteButton, index) => {
         deleteButton.addEventListener('click', () => {
+            // console.log(index); //closure
             todoList.splice(index, 1);
             renderTodoList();
         });
     });
+}
 
 document.querySelector('.js-add-todo-button').addEventListener('click', () => {
     addTODO();
@@ -69,5 +71,4 @@ function addTODO(){
     inputElement.value = '';
 
     renderTodoList();
-}
 }
