@@ -8,10 +8,25 @@
 <body>
     
     
-    
+    <button onclick="" class="js-button">Click</button>
     
     
     <script>
+        const buttonElement = document.querySelector('.js-button');
+
+        const eventListener = () => {
+            console.log('click');
+        };
+
+        buttonElement.addEventListener('click', eventListener);
+
+        buttonElement.removeEventListener('click', eventListener);
+
+        buttonElement.addEventListener('click', () => {
+            console.log('click2');
+        });
+
+
         /*
         //Hoisting
         greeting();
@@ -72,7 +87,7 @@
         console.log('next line2');*/
 
 
-        [
+        /*[
             'make dinner',
             'wash dishes',
             'watch youtube'
@@ -105,6 +120,15 @@
 
         const oneLine = () => 2 + 3;
         console.log(oneLine());
+
+        const object2 = {
+            method: () => {
+
+            },
+            method() {
+
+            }
+        };*/
 
 
     </script>
