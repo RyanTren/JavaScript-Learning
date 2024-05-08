@@ -1,14 +1,14 @@
 class Cart{
-    cartItems;
-    localStorageKey;
+    cartItems; //public property
+    #localStorageKey; //priavte property
 
     constructor(localStorageKey) {
-        this.localStorageKey = localStorageKey;
-        this.loadFromStorage();
+        this.#localStorageKey = localStorageKey;
+        this.#loadFromStorage();
     }
 
-    loadFromStorage() {
-        this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey));
+    #loadFromStorage() {
+        this.cartItems = JSON.parse(localStorage.getItem(this.#localStorageKey));
       
         if (!this.cartItem) {
             this.cartItems = [{
@@ -24,7 +24,7 @@ class Cart{
     }
 
     saveToStorage() {
-        localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems));
+        localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems));
     }
 
     addToCart(productId) {
@@ -80,6 +80,9 @@ class Cart{
 
 const cart = new Cart('cart-oop');
 const businessCart = new Cart('cart-business');
+
+// cart.#localStorageKey = 'test'; Syntax Error: private field '#localStorageKey' must be declared in an enclosing class
+
 
 console.log(cart);
 console.log(businessCart);
