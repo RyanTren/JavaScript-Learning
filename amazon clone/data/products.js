@@ -1,3 +1,4 @@
+import { renderOrderSummary } from '../scripts/checkout/orderSummary.js';
 import { formatCurrency } from '../scripts/utils/money.js';
 
 export function getProduct(productId) {
@@ -70,20 +71,44 @@ class Clothing extends Product{
 //   b: this.a
 // };
 
-function logThis(){
-  console.log(this);
+// function logThis(){
+//   console.log(this);
+// }
+// logThis();
+// logThis.call('hello');
+
+// this 
+// const object3 = {
+//   method:() => {
+//     console.log(this);
+//   }
+// };
+// object3.method();
+
+let products = [];
+
+export function loadProducts(fun) {
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener('load', () => {
+    products = JSON.parse(xhr.response).map((productDetails) => {
+      if (productDetails.type === 'clothing') {
+        return new Clothing(productDetails);
+      }
+      return new Product(productDetails);
+    });
+
+    console.log('load products');
+
+    fun(products);
+  });
+
+  xhr.open('GET', 'https://supersimplebackend.dev/products');
+  xhr.send();
 }
-logThis();
-logThis.call('hello');
 
-this 
-const object3 = {
-  method:() => {
-    console.log(this);
-  }
-};
-object3.method();
 
+/*
 export const products = [{
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     image: "images/products/athletic-cotton-socks-6-pairs.jpg",
@@ -748,3 +773,4 @@ export const products = [{
   }
   return new Product(productDetails);
 });
+*/
